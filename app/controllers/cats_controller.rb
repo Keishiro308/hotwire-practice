@@ -31,7 +31,7 @@ class CatsController < ApplicationController
     @cat = Cat.new(cat_params)
 
     if @cat.save
-      redirect_to @cat, notice: "ねこを登録しました。"
+      flash.now.notice = "ねこを登録しました。"
     else
       render :new, status: :unprocessable_entity
     end
@@ -49,7 +49,7 @@ class CatsController < ApplicationController
   # DELETE /cats/1
   def destroy
     @cat.destroy!
-    redirect_to cats_url, notice: "ねこを削除しました。"
+    flash.now.notice = "ねこを削除しました。"
   end
 
   private
